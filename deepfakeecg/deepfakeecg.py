@@ -33,8 +33,8 @@ def generate(num_of_sample, out_dir, start_id=0, run_device="cpu", checkpoint = 
        
         out_rescaled_t = torch.t(out_rescaled.squeeze())
 
-        asc_file = open("{}/{}.asc".format(out_dir, i), 'ab')
+        #asc_file = open("{}/{}.asc".format(asc_dir, i), 'ab')
         np.savetxt("{}/{}.asc".format(out_dir,str(i)), out_rescaled_t.detach().cpu().numpy(), fmt='%i')
-        asc_file.close()
+        #asc_file.close()
 
 

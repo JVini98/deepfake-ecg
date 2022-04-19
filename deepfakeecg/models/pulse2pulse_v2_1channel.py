@@ -44,7 +44,7 @@ class Transpose1dLayer_multi_input(nn.Module):
 
 
 class Pulse2pulseGenerator(nn.Module):
-    def __init__(self, model_size=25, ngpus=1, num_channels=8,
+    def __init__(self, model_size=25, ngpus=1, num_channels=1,
                  latent_dim=100, post_proc_filt_len=512,
                  verbose=False, upsample=True):
         super(Pulse2pulseGenerator, self).__init__()
@@ -185,7 +185,7 @@ class PhaseRemove(nn.Module):
 
 
 class Pulse2pulseDiscriminator(nn.Module):
-    def __init__(self, model_size=64, ngpus=1, num_channels=8, shift_factor=2,
+    def __init__(self, model_size=64, ngpus=1, num_channels=1, shift_factor=2,
                  alpha=0.2, verbose=False):
         super(Pulse2pulseDiscriminator, self).__init__()
         self.model_size = model_size  # d
@@ -210,7 +210,7 @@ class Pulse2pulseDiscriminator(nn.Module):
         self.ps5 = PhaseShuffle(shift_factor)
         self.ps6 = PhaseShuffle(shift_factor)
 
-        self.fc1 = nn.Linear(25000, 1)
+        self.fc1 = nn.Linear(22500, 1)
 
         for m in self.modules():
             if isinstance(m, nn.Conv1d) or isinstance(m, nn.Linear):
